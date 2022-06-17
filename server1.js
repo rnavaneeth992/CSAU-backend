@@ -2,12 +2,12 @@ let express = require('express');
 let app = express();
 let fs = require('fs');
 const mysql=require('mysql');
-const port=process.env.PORT||8080;
+const port=8080;
 const db = mysql.createConnection(
     {
         user:"root",
         host: "127.0.0.1",
-        password: "navaneeth",
+        password: "",
         database: "csau",
         port: 3306,
     }
@@ -55,13 +55,13 @@ app.get('/phoneMatch', function(req, res){
     });
 })
 app.post('/membershipRegistration', function(req,res){
-    const name="Navaneeth";
-    const rgno=2020103126;
-    const dept="Computer Science and Engineering";
-    const tag="Brown";
-    const domain="Tech";
-    const phno=9042742160;
-    const email="r.navaneeth99@gmail.com";
+    const name=req.body.name;
+    const rgno=req.body.rgno;
+    const dept=req.body.dept;
+    const tag=req.body.tag;
+    const domain=req.body.domain;
+    const phno=req.body.phno;
+    const email=req.body.email;
     let resulterror=["","","",""];
     if(name.length>30)
     {
